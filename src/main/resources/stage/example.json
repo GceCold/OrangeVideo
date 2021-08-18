@@ -1,0 +1,23 @@
+{
+  "name": "example",
+  "video": "[bilibili]BV1eK4y1t7P3",
+  "canClose": false,
+  "dramaList": [
+    {
+      "time": "00:05:00",
+      "buttons": ["example"],
+      "texts": [],
+      "images": [],
+      "status": "pause",
+      "last": -1
+    },
+    {
+      "time": "00:06:00",
+      "buttons": [],
+      "texts": ["example","text"],
+      "images": [],
+      "status": "play",
+      "last": -1
+    }
+  ]
+}

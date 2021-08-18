@@ -1,0 +1,32 @@
+# 按钮的ID，每一个按钮的ID必须不相同，否则会出现不可预料的后果
+id: 0
+# 按钮上显示的文字
+name: "确认"
+# 按钮文字颜色 使用RGB Hex
+color: "0xffffff"
+# 鼠标未移动至按钮上时的图片
+url: "[local]orange/gui/main/botton/control/gui_main_botton_next.png"
+# 鼠标移动至按钮上时的图片
+url2: "[local]orange/gui/main/botton/control/gui_main_botton_resume.png"
+# 按钮显示的x轴坐标
+x: 100
+# 按钮显示的y轴坐标
+y: 100
+# 按钮贴图的宽度以及按钮的宽度
+width: 68
+# 按钮贴图的高度以及按钮的高度
+high: 16
+# 按下按钮后执行的命令，可以多个 可用变量%player% 玩家名
+commands:
+- "gamemode 1"
+# 是否以op权限执行
+asop: false
+# 按下按钮后是否关闭视频窗口 下面的内容将不再执行
+close: false
+# 按下按钮后视频操作
+# 如果不切换视频请保持空
+# 或者输入其他stage的名称可转跳播放其他视频 示例：stage1[秒]
+# 播放不从头开始的视频时可能会出现0-1s的卡顿
+stage: "stage1[15]"
+#按下按钮后打开的网页链接（必须附带http或https，留空则不设置）
+click_url: "https://www.baidu.com"

@@ -1,0 +1,14 @@
+name: OrangeVideo
+version: @version@
+main: ltd.icecold.orange.OrangeVideo
+api-version: 1.15
+authors: [ Icecold ]
+description: Video Engine
+website: https://www.icecold.ltd/
+commands:
+  video:
+    usage: /video help
+permissions:
+  video.bilibili:
+    description: 播放bilibili视频
+    default: true

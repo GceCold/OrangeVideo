@@ -1,0 +1,45 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
+group = 'ltd.icecold'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
+    compileOnly (group: 'io.netty', name: 'netty-all', version: '4.1.29.Final')
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.14.2'
+    implementation group: 'org.bstats', name: 'bstats-bukkit', version: '2.2.1'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+    }
+}
+
+shadowJar {
+    exclude "**/*.SF"
+    exclude "**/*.DSA"
+    relocate 'org.bstats', 'ltd.icecold.orange'
+}
