@@ -20,12 +20,11 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.Map;
 
 public class PlayerListener implements Listener {
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event){
+    public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         try {
             Class<? extends CommandSender> senderClass = player.getClass();
@@ -36,31 +35,32 @@ public class PlayerListener implements Listener {
             e.printStackTrace();
         }
 
-        Bukkit.getScheduler().runTaskLaterAsynchronously(OrangeVideo.getInstance(),()->{
+        Bukkit.getScheduler().runTaskLaterAsynchronously(OrangeVideo.getInstance(), () -> {
             Gson gson = new Gson();
             Map<String, Object> buttonInitData = Maps.newHashMap();
             buttonInitData.put("type", PacketType.JOIN_PACKET_BUTTON_INIT);
             buttonInitData.put("data", Setting.button);
-            PacketHandle.send(player,gson.toJson(buttonInitData));
+            PacketHandle.send(player, gson.toJson(buttonInitData));
             Map<String, Object> imageInitData = Maps.newHashMap();
             imageInitData.put("type", PacketType.JOIN_PACKET_IMAGE_INIT);
             imageInitData.put("data", Setting.image);
-            PacketHandle.send(player,gson.toJson(imageInitData));
+            PacketHandle.send(player, gson.toJson(imageInitData));
             Map<String, Object> textInitData = Maps.newHashMap();
             textInitData.put("type", PacketType.JOIN_PACKET_TEXT_INIT);
             textInitData.put("data", Setting.text);
-            PacketHandle.send(player,gson.toJson(textInitData));
-        },100L);
+            PacketHandle.send(player, gson.toJson(textInitData));
+        }, 100L);
     }
 
     @EventHandler
-    public void onPlayerDamaged(EntityDamageEvent event){
+    public void onPlayerDamaged(EntityDamageEvent event) {
         if (ModMessage.watchingStage.containsKey(event.getEntity().getUniqueId()) && OrangeVideo.getInstance().getConfig().getBoolean("playerInvincible")) {
             event.setCancelled(true);
         }
     }
+
     @EventHandler
-    public void onPlayerDamaged(EntityDamageByEntityEvent event){
+    public void onPlayerDamaged(EntityDamageByEntityEvent event) {
         LivingEntity defenseEntity = (event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof ArmorStand)) ? (LivingEntity) event.getEntity() : null;
         LivingEntity attackEntity = null;
 
@@ -75,6 +75,5 @@ public class PlayerListener implements Listener {
         if (ModMessage.watchingStage.containsKey(defenseEntity.getUniqueId()) && OrangeVideo.getInstance().getConfig().getBoolean("playerInvincible")) {
             attackEntity.sendMessage(OrangeVideo.getInstance().getConfig().getString("message"));
         }
-
     }
 }

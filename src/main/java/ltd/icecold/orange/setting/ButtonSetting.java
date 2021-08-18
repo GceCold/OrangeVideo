@@ -1,14 +1,9 @@
 package ltd.icecold.orange.setting;
 
-import com.google.common.collect.Maps;
 import ltd.icecold.orange.bean.GuiButtonBean;
-import ltd.icecold.orange.bean.GuiImageBean;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import java.util.Map;
-
-public class ButtonSetting extends Setting{
-
+public class ButtonSetting extends Setting {
 
     public ButtonSetting() {
         super("button");
@@ -17,7 +12,7 @@ public class ButtonSetting extends Setting{
     @Override
     public void readSetting() {
         super.readSetting();
-        for (String name:this.configuration.keySet()){
+        for (String name : this.configuration.keySet()) {
             YamlConfiguration yamlConfiguration = this.configuration.get(name);
             GuiButtonBean guiButtonBean = new GuiButtonBean();
             guiButtonBean.setId(yamlConfiguration.getInt("id"));
@@ -34,7 +29,7 @@ public class ButtonSetting extends Setting{
             guiButtonBean.setClose(yamlConfiguration.getBoolean("close"));
             guiButtonBean.setStage(yamlConfiguration.getString("stage"));
             guiButtonBean.setClick_url(yamlConfiguration.getString("click_url"));
-            button.put(name,guiButtonBean);
+            button.put(name, guiButtonBean);
         }
     }
 }

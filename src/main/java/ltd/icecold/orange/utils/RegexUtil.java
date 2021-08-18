@@ -20,7 +20,7 @@ public class RegexUtil {
         int lastEnd = 0;
 
         StringBuilder build;
-        for(build = new StringBuilder(); m.find(); lastEnd = m.end()) {
+        for (build = new StringBuilder(); m.find(); lastEnd = m.end()) {
             build.append(input.substring(lastEnd, m.start()));
             String got = callback.replace(input, m);
             if (got == null) {
@@ -46,7 +46,7 @@ public class RegexUtil {
         } else {
             String[] results = new String[indices.length];
 
-            for(int i = 0; i < results.length; ++i) {
+            for (int i = 0; i < results.length; ++i) {
                 results[i] = input.substring(m.start(indices[i]), m.end(indices[i]));
             }
 

@@ -17,35 +17,35 @@ public class SendCommand implements SubCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
         // video send [player] [stage] [seek]
-        if (sender.isOp()){
-            sender.sendMessage("§7[OrangeVideo] >§c您没有权限");
+        if (sender.isOp()) {
+            sender.sendMessage("§7[OrangeVideo] >§cYou don't have permission");
             return;
         }
-        if (args.length != 4){
-            sender.sendMessage("§7[OrangeVideo] >§c请输入正确格式指令§6/video send [player] [stage] [视频进度(单位s)]");
+        if (args.length != 4) {
+            sender.sendMessage("§7[OrangeVideo] >§cPlease enter the correct format command §6/video send [player] [stage] [Video progress (unit s)]");
             return;
         }
-        if (Bukkit.getPlayer(args[1]) == null){
-            sender.sendMessage("§7[OrangeVideo] >§c目标玩家不在线");
+        if (Bukkit.getPlayer(args[1]) == null) {
+            sender.sendMessage("§7[OrangeVideo] >§cTarget player is not online");
             return;
         }
-        if (!Setting.stage.containsKey(args[2])){
-            sender.sendMessage("§7[OrangeVideo] >§c未找到该剧本");
+        if (!Setting.stage.containsKey(args[2])) {
+            sender.sendMessage("§7[OrangeVideo] >§cThe script was not found");
             return;
         }
-        if (!StringUtils.isNumeric(args[3])){
-            sender.sendMessage("§7[OrangeVideo] >§c请输入正确的进度");
+        if (!StringUtils.isNumeric(args[3])) {
+            sender.sendMessage("§7[OrangeVideo] >§cPlease enter the correct progress");
             return;
         }
-        if (Integer.parseInt(args[3])<0){
-            sender.sendMessage("§7[OrangeVideo] >§c请输入正确的进度");
+        if (Integer.parseInt(args[3]) < 0) {
+            sender.sendMessage("§7[OrangeVideo] >§cPlease enter the correct progress");
             return;
         }
         Player player = Bukkit.getPlayer(args[1]);
-        Map<String,Object> data = Maps.newHashMap();
+        Map<String, Object> data = Maps.newHashMap();
         data.put("type", PacketType.STAGE_PLAY);
         data.put("data", Setting.stage.get(args[2]));
         data.put("seek", args[3]);
-        PacketHandle.send(player,new Gson().toJson(data));
+        PacketHandle.send(player, new Gson().toJson(data));
     }
 }

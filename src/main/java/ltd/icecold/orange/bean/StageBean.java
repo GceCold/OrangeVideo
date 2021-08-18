@@ -1,8 +1,5 @@
 package ltd.icecold.orange.bean;
 
-import com.google.gson.annotations.JsonAdapter;
-import ltd.icecold.orange.factory.StageModelForeignKeyTypeAdapterFactory;
-
 import java.util.List;
 
 public class StageBean {

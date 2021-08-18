@@ -1,14 +1,12 @@
 package ltd.icecold.orange.commands;
 
 import com.google.common.collect.Maps;
-
 import ltd.icecold.orange.commands.subcommands.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.util.Arrays;
 import java.util.Map;
 
 public class CommandHandle implements CommandExecutor {
@@ -17,17 +15,17 @@ public class CommandHandle implements CommandExecutor {
 
     public CommandHandle() {
         registerCommand("stage", new StageCommand());
-        registerCommand("bilibili",new BilibiliCommand());
-        registerCommand("reload",new ReloadCommand());
-        registerCommand("help",new HelpCommand());
-        registerCommand("send",new SendCommand());
+        registerCommand("bilibili", new BilibiliCommand());
+        registerCommand("reload", new ReloadCommand());
+        registerCommand("help", new HelpCommand());
+        registerCommand("send", new SendCommand());
         instance = this;
         //System.out.println(Arrays.toString(subCommandMap.keySet().toArray()));
     }
 
     private static void registerCommand(String subCommandName, SubCommand subCommand) {
         if (subCommandMap.containsKey(subCommandName)) {
-            Bukkit.getConsoleSender().sendMessage("§6[§eOrangeGui§6] §f重复注册指令!");
+            Bukkit.getConsoleSender().sendMessage("§6[§eOrangeGui§6] §fRepeat registration instruction!");
         }
         subCommandMap.put(subCommandName, subCommand);
     }
@@ -39,7 +37,7 @@ public class CommandHandle implements CommandExecutor {
             return true;
         }
         if (!subCommandMap.containsKey(args[0])) {
-            sender.sendMessage("§6[§eOrangeVideo§6] §c未知指令!");
+            sender.sendMessage("§6[§eOrangeVideo§6] §cUnknown instruction!");
             return true;
         }
 

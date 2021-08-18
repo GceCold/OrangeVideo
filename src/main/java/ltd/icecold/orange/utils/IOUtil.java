@@ -1,19 +1,17 @@
 package ltd.icecold.orange.utils;
 
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 @SuppressWarnings("all")
 public class IOUtil {
     /**
-     *
-     * @param f 文件
-     * @return 返回文件内的字符串 使用UTF-8编码
+     * @param f File
+     * @return Returns the string in the file using UTF-8 encoding
      */
     public static String readFile(File f) {
-        if(!f.exists()) {
-            throw new NullPointerException("文件不存在");
+        if (!f.exists()) {
+            throw new NullPointerException("File does not exist");
         }
         try {
             BufferedInputStream biss = new BufferedInputStream(new FileInputStream(f));
@@ -28,18 +26,16 @@ public class IOUtil {
     }
 
     /**
-     *
-     * @param f 要写入的文件
-     * @param data 数据
+     * @param f    File to be written
+     * @param data Data
      */
     public static void writeFile(File f, String data) {
         writeFile(f, data.getBytes(StandardCharsets.UTF_8));
     }
 
     /**
-     *
-     * @param f 要写入的文件
-     * @param data 数据
+     * @param f    File to be written
+     * @param data Data
      */
     public static void writeFile(File f, byte[] data) {
         try {

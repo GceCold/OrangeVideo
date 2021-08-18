@@ -9,10 +9,12 @@ import java.nio.charset.StandardCharsets;
 
 public class PacketHandle {
     private static final int IDX = 6666;
+
     /**
-     * 兼容高版本forge发送信息
-     * @param player 玩家
-     * @param msg 信息
+     * Compatible with high version forge to send information
+     *
+     * @param player Player
+     * @param msg    Message
      */
     public static void send(Player player, String msg) {
         byte[] bytes = msg.getBytes(StandardCharsets.UTF_8);
@@ -23,15 +25,16 @@ public class PacketHandle {
     }
 
     /**
-     * 兼容高版本forge读取信息
-     * @param array 数据
+     * Compatible with high version forge to read information
+     *
+     * @param array Data
      */
     public static String read(byte[] array) {
         ByteBuf buf = Unpooled.wrappedBuffer(array);
         if (buf.readUnsignedByte() == IDX) {
             return buf.toString(StandardCharsets.UTF_8);
         } else {
-            return new String(array,StandardCharsets.UTF_8);
+            return new String(array, StandardCharsets.UTF_8);
         }
     }
 }

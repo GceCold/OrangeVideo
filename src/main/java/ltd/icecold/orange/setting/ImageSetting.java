@@ -3,7 +3,7 @@ package ltd.icecold.orange.setting;
 import ltd.icecold.orange.bean.GuiImageBean;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-public class ImageSetting extends Setting{
+public class ImageSetting extends Setting {
 
     public ImageSetting() {
         super("image");
@@ -12,7 +12,7 @@ public class ImageSetting extends Setting{
     @Override
     public void readSetting() {
         super.readSetting();
-        for (String name:this.configuration.keySet()){
+        for (String name : this.configuration.keySet()) {
             YamlConfiguration yamlConfiguration = this.configuration.get(name);
             GuiImageBean guiImageBean = new GuiImageBean();
             guiImageBean.setImage(yamlConfiguration.getString("image"));
@@ -23,7 +23,7 @@ public class ImageSetting extends Setting{
             guiImageBean.setXshow(yamlConfiguration.getInt("xshow"));
             guiImageBean.setYshow(yamlConfiguration.getInt("yshow"));
             guiImageBean.setHovertext(text.get(yamlConfiguration.getString("hovertext")));
-            image.put(name,guiImageBean);
+            image.put(name, guiImageBean);
         }
     }
 }

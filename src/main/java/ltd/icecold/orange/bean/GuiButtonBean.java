@@ -1,10 +1,6 @@
 package ltd.icecold.orange.bean;
 
-import com.google.common.collect.Maps;
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
-
 import java.util.List;
-import java.util.Map;
 
 public class GuiButtonBean {
     private int id;
