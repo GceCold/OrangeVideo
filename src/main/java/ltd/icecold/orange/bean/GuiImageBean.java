@@ -1,7 +1,5 @@
 package ltd.icecold.orange.bean;
 
-import java.util.List;
-
 public class GuiImageBean {
     private String image;
     private int x;

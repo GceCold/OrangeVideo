@@ -6,10 +6,9 @@ import ltd.icecold.orange.bean.StageBean;
 import ltd.icecold.orange.utils.IOUtil;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.List;
 
-public class StageSetting extends Setting{
+public class StageSetting extends Setting {
     public StageSetting() {
         super("stage");
     }
@@ -17,17 +16,17 @@ public class StageSetting extends Setting{
     @Override
     public void readSetting() {
         List<File> files = getFiles(OrangeVideo.getInstance().getDataFolder() + "/" + this.component);
-        //System.out.println(this.component+"配置文件数："+configurationFiles.size());
+        //System.out.println(this.component + "Number of configuration files：" + configurationFiles.size());
         Gson gson = new Gson();
-        files.forEach((file)->{
+        files.forEach((file) -> {
             StageBean stageBean = gson.fromJson(IOUtil.readFile(file), StageBean.class);
-            Setting.stage.put(stageBean.getName(),stageBean);
+            Setting.stage.put(stageBean.getName(), stageBean);
         });
     }
 
     @Override
     protected void writeSetting() {
-        if (!new File(OrangeVideo.getInstance().getDataFolder(),this.component+"/example.json").exists())
-            OrangeVideo.getInstance().saveResource(this.component+"/example.json",false);
+        if (!new File(OrangeVideo.getInstance().getDataFolder(), this.component + "/example.json").exists())
+            OrangeVideo.getInstance().saveResource(this.component + "/example.json", false);
     }
 }

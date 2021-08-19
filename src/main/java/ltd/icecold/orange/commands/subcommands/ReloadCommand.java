@@ -16,7 +16,7 @@ import java.util.Map;
 public class ReloadCommand implements SubCommand {
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (sender.isOp()){
+        if (sender.isOp()) {
             Setting.button.clear();
             Setting.text.clear();
             Setting.image.clear();
@@ -26,7 +26,7 @@ public class ReloadCommand implements SubCommand {
             new ButtonSetting();
             new StageSetting();
             OrangeVideo.getInstance().reloadConfig();
-            Bukkit.getScheduler().runTaskAsynchronously(OrangeVideo.getInstance(),()->{
+            Bukkit.getScheduler().runTaskAsynchronously(OrangeVideo.getInstance(), () -> {
                 Gson gson = new Gson();
                 Map<String, Object> data = Maps.newHashMap();
                 data.put("type", PacketType.JOIN_PACKET_BUTTON_INIT);
@@ -40,14 +40,14 @@ public class ReloadCommand implements SubCommand {
                 String textData = gson.toJson(data);
 
                 Utils.getOnlinePlayers().forEach((player -> {
-                    PacketHandle.send(player,buttonData);
-                    PacketHandle.send(player,imageData);
-                    PacketHandle.send(player,textData);
+                    PacketHandle.send(player, buttonData);
+                    PacketHandle.send(player, imageData);
+                    PacketHandle.send(player, textData);
                 }));
             });
-            sender.sendMessage("[OrangeVideo] >§6重载成功");
-        }else {
-            sender.sendMessage("[OrangeVideo] >§c您没有权限！");
+            sender.sendMessage("[OrangeVideo] >§6Reload success");
+        } else {
+            sender.sendMessage("[OrangeVideo] >§cYou don't have permission!");
         }
     }
 }

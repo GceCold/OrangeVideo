@@ -8,9 +8,9 @@ import org.bukkit.event.HandlerList;
 
 public class StageButtonActionEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
-    private StageBean stage;
-    private GuiButtonBean button;
-    private Player player;
+    private final StageBean stage;
+    private final GuiButtonBean button;
+    private final Player player;
 
     public StageButtonActionEvent(Player player, StageBean stage, GuiButtonBean button) {
         this.stage = stage;
